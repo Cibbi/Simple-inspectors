@@ -21,19 +21,19 @@ namespace Cibbi.SimpleInspectors
 				//check if there is any texture property pending for extra properties checking and we're not exceeding the 2 extra properties
 				if(extraPropertiesInserted < 2 && lastTextureProperty != null)
 				{	
-					Debug.Log("Check1");
+					//Debug.Log("Check1");
 					//checks if the property we're iterating is an extra property to add to the texture one
 					if(property.displayName.Contains("(Extra)"))
 					{
 						textureExtra[extraPropertiesInserted]=property;
 						extraPropertiesInserted++;
-						Debug.Log("addedExtra");
+						//Debug.Log("addedExtra");
 						continue;
 					}
 					//if not we're assuming that there are no extra properties left to add, and setting the extraPropertiesInserted value so the next iteration we know we have to register the texture property
 					else
 					{
-						Debug.Log("check2");
+						//Debug.Log("check2");
 						extraPropertiesInserted=2;
 					}
 				}
@@ -41,7 +41,7 @@ namespace Cibbi.SimpleInspectors
 				if(extraPropertiesInserted == 2 && lastTextureProperty != null)
 				{
 					finalizeTextureProperty();
-					Debug.Log("finalizedTexture");
+					//Debug.Log("finalizedTexture");
 				}
 
 				if(property.displayName.Contains("(Texture)"))
@@ -50,18 +50,18 @@ namespace Cibbi.SimpleInspectors
 					if(lastTextureProperty != null)
 					{
 						finalizeTextureProperty();
-						Debug.Log("finalizedTexture");
+						//Debug.Log("finalizedTexture");
 					}
 					lastTextureProperty=property;
 					extraPropertiesInserted=0;
-					Debug.Log("InitializedTexture");
+					//Debug.Log("InitializedTexture");
 					continue;
 				}
 				if(property.flags!=MaterialProperty.PropFlags.HideInInspector)
 				{
 					StoredProperty genericProperty= new StoredShaderProperty(property);
 					inspectorProperties.Add(genericProperty);
-					Debug.Log("addedProperty");
+					//Debug.Log("addedProperty");
 				}
 
 
