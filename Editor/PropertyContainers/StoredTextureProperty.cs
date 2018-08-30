@@ -33,7 +33,41 @@ namespace Cibbi.SimpleInspectors
         /// <param name="label">The label used for the texture property</param>
         /// <param name="textureProperty">The texture property</param>
         /// <param name="extraProperty1">First optional property inlined after the texture property</param>
+        /// <param name="extraProperty2">Second optional property inlined after the texture property</param>
+        public StoredTextureProperty(string label, MaterialProperty textureProperty, MaterialProperty extraProperty1, MaterialProperty extraProperty2) : this(new GUIContent(label,label),textureProperty,extraProperty1,extraProperty2){}
+
+        /// <summary>
+        /// Object that stores a texture property to be drawn later or passed to other objects
+        /// </summary>
+        /// <param name="label">The label used for the texture property</param>
+        /// <param name="textureProperty">The texture property</param>
+        /// <param name="extraProperty1">First optional property inlined after the texture property</param>
+        /// <param name="extraProperty2">Second optional property inlined after the texture property</param>
+        public StoredTextureProperty( MaterialProperty textureProperty, MaterialProperty extraProperty1, MaterialProperty extraProperty2) : this(new GUIContent(textureProperty.displayName,textureProperty.displayName),textureProperty,extraProperty1,extraProperty2){}
+
+        /// <summary>
+        /// Object that stores a texture property to be drawn later or passed to other objects
+        /// </summary>
+        /// <param name="label">The label used for the texture property</param>
+        /// <param name="textureProperty">The texture property</param>
+        /// <param name="extraProperty1">First optional property inlined after the texture property</param>
         public StoredTextureProperty(GUIContent label, MaterialProperty textureProperty, MaterialProperty extraProperty1): this(label,textureProperty,extraProperty1,null){}
+
+        /// <summary>
+        /// Object that stores a texture property to be drawn later or passed to other objects
+        /// </summary>
+        /// <param name="label">The label used for the texture property</param>
+        /// <param name="textureProperty">The texture property</param>
+        /// <param name="extraProperty1">First optional property inlined after the texture property</param>
+        public StoredTextureProperty(string label, MaterialProperty textureProperty, MaterialProperty extraProperty1): this(new GUIContent(label,label),textureProperty,extraProperty1,null){}
+
+        /// <summary>
+        /// Object that stores a texture property to be drawn later or passed to other objects
+        /// </summary>
+        /// <param name="label">The label used for the texture property</param>
+        /// <param name="textureProperty">The texture property</param>
+        /// <param name="extraProperty1">First optional property inlined after the texture property</param>
+        public StoredTextureProperty(MaterialProperty textureProperty, MaterialProperty extraProperty1): this(new GUIContent(textureProperty.displayName,textureProperty.displayName),textureProperty,extraProperty1,null){}
         
         /// <summary>
         /// Object that stores a texture property to be drawn later or passed to other objects
@@ -45,6 +79,14 @@ namespace Cibbi.SimpleInspectors
         /// <summary>
         /// Object that stores a texture property to be drawn later or passed to other objects
         /// </summary>
+        /// <param name="label">The label used for the texture property</param>
+        /// <param name="textureProperty">The texture property</param>
+        public StoredTextureProperty(string label, MaterialProperty textureProperty): this(new GUIContent(label,label),textureProperty,null,null){}
+
+        /// <summary>
+        /// Object that stores a texture property to be drawn later or passed to other objects
+        /// </summary>
+        /// <param name="label">The label used for the texture property</param>
         /// <param name="textureProperty">The texture property</param>
         public StoredTextureProperty(MaterialProperty textureProperty): this(new GUIContent(textureProperty.displayName,textureProperty.displayName),textureProperty,null,null){}
         

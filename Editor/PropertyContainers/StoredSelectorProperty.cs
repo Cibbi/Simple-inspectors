@@ -6,7 +6,7 @@ namespace Cibbi.SimpleInspectors
 	public class StoredSelectorProperty : StoredProperty {
 
         MaterialProperty selectedOption;
-        string[] options;
+        GUIContent[] options;
         GUIContent label;
 
         /// <summary>
@@ -18,7 +18,13 @@ namespace Cibbi.SimpleInspectors
         public StoredSelectorProperty(GUIContent label, string[] options, MaterialProperty selectedOption)
         {
             this.selectedOption=selectedOption;
-            this.options=options;
+            this.options= new GUIContent[options.Length];
+            int i=0;
+            foreach(string option in options)
+            {   
+                this.options[i]=new GUIContent(option, option);
+                i++;
+            }
             this.label=label;
         }
 
@@ -47,7 +53,7 @@ namespace Cibbi.SimpleInspectors
         {
             int bMode = (int)selectedOption.floatValue;
             EditorGUI.BeginChangeCheck();
-            bMode = EditorGUILayout.Popup("Rendering Mode", (int)bMode, options);
+            bMode = EditorGUILayout.Popup(label, (int)bMode, options);
             if (EditorGUI.EndChangeCheck())
             {
                 //materialEditor.RegisterPropertyChangeUndo("");
