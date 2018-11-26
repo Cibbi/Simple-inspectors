@@ -56,7 +56,7 @@ namespace Cibbi.SimpleInspectors
             bMode = EditorGUILayout.Popup(label, (int)bMode, options);
             if (EditorGUI.EndChangeCheck())
             {
-                //materialEditor.RegisterPropertyChangeUndo("");
+                materialEditor.RegisterPropertyChangeUndo(label.text);
                 selectedOption.floatValue = (float)bMode;
             }
 

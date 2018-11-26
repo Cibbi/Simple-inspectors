@@ -27,19 +27,19 @@
 		}
 
 		/// <summary>
-		/// Disable display of properties
+		/// Creates a list of properties that can be enabled and disabled in bulk
 		/// </summary>
-		public void Disable()
-		{
-			enabled=false;
-		}
+		/// <param name="enabled">Are the properties visible?</param>
+		/// <param name="idented">If true properties inside will be displayed with 1+ identation level</param>
+		public StoredPropertyList( bool enabled, bool idented) : this(new StoredProperty[0], enabled, idented){}
+
 
 		/// <summary>
-		/// Enable display of properties
+		/// Enable/Disable display of properties
 		/// </summary>
-		public void Enable()
+		public void Enable(bool enabled)
 		{
-			enabled=true;
+			this.enabled=enabled;
 		}
 
 		/// <summary>

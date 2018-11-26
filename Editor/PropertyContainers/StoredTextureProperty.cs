@@ -11,6 +11,7 @@ namespace Cibbi.SimpleInspectors
         MaterialProperty textureProperty;
         MaterialProperty extraProperty1;
         MaterialProperty extraProperty2;
+        bool showTextureScaleAndOffset;
 
         /// <summary>
         /// Object that stores a texture property to be drawn later or passed to other objects
@@ -25,6 +26,8 @@ namespace Cibbi.SimpleInspectors
             this.textureProperty=textureProperty;
             this.extraProperty1=extraProperty1;
             this.extraProperty2=extraProperty2;
+
+            showTextureScaleAndOffset=false;
         }
 
         /// <summary>
@@ -107,7 +110,46 @@ namespace Cibbi.SimpleInspectors
             else{
                 materialEditor.TexturePropertySingleLine(label, textureProperty);
             }
+            if(showTextureScaleAndOffset&&textureProperty.textureValue)
+            {
+                EditorGUI.indentLevel++;
+                materialEditor.TextureScaleOffsetProperty(textureProperty);
+                EditorGUI.indentLevel--;
+            }
+
+        }
+
+        /// <summary>
+        /// Get the stored texture property
+        /// </summary>
+        public MaterialProperty GetGetStoredTextureProperty()
+        {
+            return textureProperty;
+        }
+
+        /// <summary>
+        /// Get the first extra stored property
+        /// </summary>
+        public MaterialProperty GetGetExtraProperty1()
+        {
+            return extraProperty1;
+        }
+
+        /// <summary>
+        /// Get the second extra stored property
+        /// </summary>
+        public MaterialProperty GetGetExtraProperty2()
+        {
+            return extraProperty2;
+        }
+
+        /// <summary>
+        /// Toggle the showing of the texture scale and offset field
+        /// </summary>
+        /// <param name="showTextureScaleAndOffset">true: show texture scale and offset false: don't show texture scale and offset</param>
+        public void ShowTextureScaleAndOffset(bool showTextureScaleAndOffset)
+        {
+            this.showTextureScaleAndOffset=showTextureScaleAndOffset;
         }
     }
-    //materialEditor.TexturePropertySingleLine(Styles.emission, _EmissionMap, _EmissionColor);
 }

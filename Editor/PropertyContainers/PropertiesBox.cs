@@ -76,8 +76,11 @@
 		{ 
 			GUIStyle sectionStyle = new GUIStyle(EditorStyles.boldLabel);
         	sectionStyle.alignment = TextAnchor.MiddleCenter;
-
-			Rect r = EditorGUILayout.BeginHorizontal("box");
+			Color bCol=GUI.backgroundColor;
+            GUI.backgroundColor = new Color (0.9f, 0.9f, 0.9f, 0.75f);
+			EditorGUILayout.BeginVertical ("Button");
+			GUI.backgroundColor = bCol;
+			Rect r = EditorGUILayout.BeginHorizontal();
 			//decide what type of box style use based on if the content of the box can be disabled or not
 			if(canBeDisabled)
 			{	
@@ -86,13 +89,11 @@
 			}
 			else
 			{
-				//order matters! in both conditions this line is called, but here is called before the icon on the side
-				//to make possible to click the icon as well and activate the trigger, in the other condition it was called
-				//after to not interfere with the radio button
-				isOpen = GUI.Toggle(r, isOpen, GUIContent.none, new GUIStyle()); 
-				EditorGUILayout.Toggle(isOpen, EditorStyles.foldout, GUILayout.MaxWidth(15.0f));
+				EditorGUILayout.LabelField("", GUILayout.MaxWidth(10.0f));
 			}
             EditorGUILayout.LabelField(label, sectionStyle);
+			isOpen = GUI.Toggle(r, isOpen, GUIContent.none, new GUIStyle()); 
+			EditorGUILayout.Toggle(isOpen, EditorStyles.foldout, GUILayout.MaxWidth(15.0f));
             EditorGUILayout.EndHorizontal();
             if (isOpen)
             {
@@ -104,9 +105,9 @@
 					property.DrawProperty(materialEditor);
 				}
                 EditorGUI.EndDisabledGroup();
-
-                EditorGUILayout.Space();
             }
+			EditorGUILayout.EndVertical();
+			EditorGUILayout.Space();
 		}
 	}
 

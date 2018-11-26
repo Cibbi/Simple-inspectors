@@ -31,9 +31,12 @@
 
 		public abstract void Update(MaterialEditor materialEditor, MaterialProperty[] properties);
 		
-		public abstract void CheckChanges();
+		public virtual void CheckChanges()
+		{
 
-		static void SetKeyword(Material m, string keyword, bool state)
+		}
+		
+		protected void SetKeyword(Material m, string keyword, bool state)
 		{
 			if (state)
 				m.EnableKeyword(keyword);
