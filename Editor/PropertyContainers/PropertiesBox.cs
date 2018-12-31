@@ -68,6 +68,11 @@
 			return isEnabled;
 		}
 
+		public void Enable(bool enabled)
+		{
+			isEnabled=enabled;
+		}
+
 		/// <summary>
 		/// Draws the box into the given Material Editor
 		/// </summary>

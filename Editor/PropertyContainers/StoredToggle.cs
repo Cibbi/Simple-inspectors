@@ -31,6 +31,11 @@
 			return enabled;
 		}
 
+		public void Enable(bool enabled)
+		{
+			this.enabled=enabled;
+		}
+
 		/// <summary>
 		/// Draws the property Stored inside this object
 		/// </summary>
